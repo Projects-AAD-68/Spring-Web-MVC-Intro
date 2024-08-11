@@ -15,4 +15,8 @@ public class DemoController {
     public String pathvariableWithRegex(@PathVariable("id") String id) {
         return "DemoController run perfectly with :"+id;
     }
+    @GetMapping(params = "test=all")
+    public String params() {
+        return "All are tested";
+    }
 }
