@@ -1,7 +1,10 @@
 package lk.ijse.gdse.aad68.introwithsprinweb.controller;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RequestMapping("/demo")
 @RestController
@@ -36,5 +39,15 @@ public class DemoController {
             return ResponseEntity.ok("Dynamic data are even");
         }
         return ResponseEntity.ok("Dynamic data are odd");
+    }
+    @PostMapping(value = "/mapparams", params = {"id","desc"})
+    public String handleMaps(@RequestParam ("id") String id, @RequestParam ("desc")String desc, @RequestParam Map<String,String> params){
+        System.out.println(params);
+        return "Handle Maps with params "+params;
+    }
+    @PostMapping(value = "/multimapparams", params = {"id","desc"})
+    public String handleMultiMaps(@RequestParam ("id") String id, @RequestParam ("desc")String desc, @RequestParam MultiValueMap<String,String> params){
+        System.out.println(params);
+        return "Handle Maps with params "+params;
     }
 }
