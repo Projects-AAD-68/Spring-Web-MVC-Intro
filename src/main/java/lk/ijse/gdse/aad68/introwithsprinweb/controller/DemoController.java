@@ -1,9 +1,6 @@
 package lk.ijse.gdse.aad68.introwithsprinweb.controller;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/demo")
 @RestController
 public class DemoController {
@@ -18,5 +15,9 @@ public class DemoController {
     @GetMapping(params = "test=all")
     public String params() {
         return "All are tested";
+    }
+    @PostMapping(params = {"name","quantity"})
+    public String paramData(@RequestParam("name") String param01,@RequestParam ("quantity") String param02) {
+        return "Param data are "+ param01 + " and " + param02;
     }
 }
