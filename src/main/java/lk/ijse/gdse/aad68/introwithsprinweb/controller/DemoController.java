@@ -1,4 +1,5 @@
 package lk.ijse.gdse.aad68.introwithsprinweb.controller;
+import lk.ijse.gdse.aad68.introwithsprinweb.dto.Customer;
 import lk.ijse.gdse.aad68.introwithsprinweb.dto.Item;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -56,4 +57,15 @@ public class DemoController {
         System.out.println(item);
         return "Handle Maps with params "+params;
     }
+    @PostMapping(
+            value = "/customer",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    public String JSONToDTO(@RequestBody Customer customer){
+        System.out.println(customer.getId());
+        System.out.println(customer.getName());
+        System.out.println(customer.getEmail());
+        return "Convert success";
+    }
+
 }
